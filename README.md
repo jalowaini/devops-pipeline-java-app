@@ -1,9 +1,27 @@
-🚀 Java CI/CD Pipeline with Jenkins, Docker, and AWS EKS
+# 🚀 Java CI/CD Pipeline – Spring Boot + Jenkins + AWS EKS
 
-A complete production-grade CI/CD pipeline that builds, containerizes, and deploys a Spring Boot application to Kubernetes (EKS) using Jenkins.
+A production-grade CI/CD pipeline that builds, Dockerizes, and deploys a Java Spring Boot application on AWS using Jenkins, ECR, and EKS.
 
-🧱 Architecture Flow
+---
 
+## 🧰 Tech Stack
+
+| Tool / Service | Purpose                        |
+|----------------|--------------------------------|
+| Java 17        | Backend Application            |
+| Maven          | Build Tool                     |
+| Docker         | Containerization               |
+| Jenkins        | CI/CD Automation               |
+| Amazon ECR     | Docker Image Registry          |
+| Amazon EKS     | Kubernetes Cluster             |
+| AWS CLI        | AWS Operations & Authentication|
+| kubectl        | Kubernetes CLI Tool            |
+
+---
+
+## 🧱 Architecture Overview
+
+```text
 [ GitHub Repo ]
       ↓
 [ Jenkins (Docker on EC2) ]
@@ -16,38 +34,34 @@ A complete production-grade CI/CD pipeline that builds, containerizes, and deplo
       ↓
 [ Deploy to Amazon EKS ]
       ↓
-[ Access via LoadBalancer ]
+[ Access via LoadBalancer Service ]
 🔄 Jenkins Pipeline Stages
-
 
 Stage	Description
 ✅ Checkout	Pulls source code from GitHub
-✅ Maven Build	Compiles code and generates .jar file
-✅ Docker Build/Push	Builds image and pushes to Amazon ECR
-✅ Deploy to EKS	Applies Kubernetes manifests (deployment + service)
-✅ Post-deploy Test	Verifies application is accessible externally
+✅ Maven Build	Compiles project and generates .jar
+✅ Docker Build	Builds Docker image from the .jar
+✅ Push to ECR	Pushes the Docker image to Amazon ECR
+✅ Deploy to EKS	Applies Kubernetes manifests (deployment/service)
+✅ Post-deploy Test	Verifies that the app is running and reachable
 ✅ Results
+CI/CD is fully automated via Jenkins
 
-CI/CD is fully automated with Jenkins
+Docker Image stored in Amazon ECR
 
-Docker image is stored in Amazon ECR
+App is deployed to Amazon EKS with public access
 
-Application is deployed on AWS EKS and accessible via LoadBalancer
+Structure is production-ready and easily extensible
 
-Production-ready design: clean, scalable, and modular
-
-🔮 What's Next?
-
-This pipeline can be enhanced further with:
-
+🔮 Future Enhancements
 🔐 HTTPS via Ingress + Cert-Manager
 
-📈 Monitoring with Prometheus + Grafana
+📊 Monitoring with Prometheus & Grafana
 
-📦 Helm Charts or ArgoCD for GitOps
+🔄 GitOps with ArgoCD or Helm
 
-🧪 Automated post-deploy testing
+🧪 Automated smoke testing post-deploy
 
 👨‍💻 Author
+Built with ❤️ by @jalowaini
 
-Built with ❤️ by [@jalowaini](https://github.com/jalowaini)
