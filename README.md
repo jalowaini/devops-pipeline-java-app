@@ -1,28 +1,9 @@
-# Java CI/CD Pipeline – Spring Boot + Jenkins + AWS EKS
+🚀 Java CI/CD Pipeline with Jenkins, Docker, and AWS EKS
 
-## 📌 Overview
-A production-grade CI/CD pipeline that builds, packages, Dockerizes, and deploys a Java Spring Boot application to AWS EKS using Jenkins. The entire workflow is automated using a Jenkins Pipeline.
+A complete production-grade CI/CD pipeline that builds, containerizes, and deploys a Spring Boot application to Kubernetes (EKS) using Jenkins.
 
----
+🧱 Architecture Flow
 
-## 🧰 Tech Stack
-
-| Tool/Service | Purpose |
-|--------------|---------|
-| Java 17      | Backend Application |
-| Maven        | Build Tool |
-| Docker       | Containerization |
-| Jenkins      | CI/CD Pipeline |
-| Amazon ECR   | Docker Image Registry |
-| Amazon EKS   | Kubernetes Cluster |
-| kubectl      | Cluster Management |
-| AWS CLI      | AWS Operations |
-
----
-
-## 🧱 Architecture
-
-```text
 [ GitHub Repo ]
       ↓
 [ Jenkins (Docker on EC2) ]
@@ -35,21 +16,38 @@ A production-grade CI/CD pipeline that builds, packages, Dockerizes, and deploys
       ↓
 [ Deploy to Amazon EKS ]
       ↓
-[ Access via LoadBalancer Service ]
-🛠️ Jenkins Pipeline Stages
+[ Access via LoadBalancer ]
+🔄 Jenkins Pipeline Stages
+
 
 Stage	Description
-Checkout	Clones the GitHub repo
-Build	Builds the .jar using Maven
-Docker Build & Push	Builds Docker image and pushes to ECR
-Deploy to EKS	Applies deployment and service manifests
-Post-deploy Test	Verifies app is reachable
+✅ Checkout	Pulls source code from GitHub
+✅ Maven Build	Compiles code and generates .jar file
+✅ Docker Build/Push	Builds image and pushes to Amazon ECR
+✅ Deploy to EKS	Applies Kubernetes manifests (deployment + service)
+✅ Post-deploy Test	Verifies application is accessible externally
 ✅ Results
-CI/CD fully automated
 
-Application is running on EKS with external access
+CI/CD is fully automated with Jenkins
 
-Future-ready for HTTPS, Monitoring, Helm, ArgoCD
+Docker image is stored in Amazon ECR
 
-📌 Author
-Built with ❤️ by @jalowaini
+Application is deployed on AWS EKS and accessible via LoadBalancer
+
+Production-ready design: clean, scalable, and modular
+
+🔮 What's Next?
+
+This pipeline can be enhanced further with:
+
+🔐 HTTPS via Ingress + Cert-Manager
+
+📈 Monitoring with Prometheus + Grafana
+
+📦 Helm Charts or ArgoCD for GitOps
+
+🧪 Automated post-deploy testing
+
+👨‍💻 Author
+
+Built with ❤️ by [@jalowaini](https://github.com/jalowaini)
