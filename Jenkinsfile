@@ -1,5 +1,5 @@
 pipeline {
-  agent any
+  agent { label 'aws-agent' }
 
   environment {
     IMAGE_NAME = "java-app"
@@ -9,6 +9,7 @@ pipeline {
   }
 
   stages {
+
     stage('Build JAR') {
       steps {
         sh 'mvn clean package -DskipTests'
@@ -30,5 +31,17 @@ pipeline {
         '''
       }
     }
+
+    stage('Deploy to EKS') {
+      steps {
+        sh '''
+          aws eks --region $AWS_REGION update-kubeconfig --name devops-capstone-cluster
+          kubectl apply -f deployment.yaml
+          kubectl apply -f service.yaml
+        '''
+      }
+    }
   }
 }
+
+
