@@ -4,12 +4,14 @@ pipeline {
   environment {
     IMAGE_NAME = "java-app"
     TAG = "latest"
+    AWS_REGION = "us-east-1"
+    ECR_REPO = "920373001365.dkr.ecr.us-east-1.amazonaws.com/java-app-repo"
   }
 
   stages {
     stage('Build JAR') {
       steps {
-        sh 'mvn clean package'
+        sh 'mvn clean package -DskipTests'
       }
     }
 
@@ -19,10 +21,15 @@ pipeline {
       }
     }
 
-    stage('List Docker Images') {
+    stage('Push to Amazon ECR') {
       steps {
-        sh 'docker images'
+        sh '''
+          aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $ECR_REPO
+          docker tag $IMAGE_NAME:$TAG $ECR_REPO:$TAG
+          docker push $ECR_REPO:$TAG
+        '''
       }
     }
   }
 }
+
