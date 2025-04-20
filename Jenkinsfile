@@ -1,5 +1,5 @@
 pipeline {
-  agent { label 'aws-agent' }
+  agent any
 
   environment {
     IMAGE_NAME = "java-app"
