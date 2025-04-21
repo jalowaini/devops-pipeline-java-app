@@ -23,10 +23,6 @@ A production-grade CI/CD pipeline that builds, Dockerizes, and deploys a Java Sp
 
 [ GitHub Repo ] ↓ [ Jenkins (Docker on EC2) ] ↓ [ Maven Build → .jar ] ↓ [ Docker Build → Image ] ↓ [ Push to Amazon ECR ] ↓ [ Deploy to Amazon EKS ] ↓ [ Access via LoadBalancer Service ]
 
-yaml
-نسخ
-تحرير
-
 ---
 
 ## 🔄 Jenkins Pipeline Stages
