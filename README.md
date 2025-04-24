@@ -1,4 +1,4 @@
- 🚀 Java CI/CD Pipeline – Spring Boot + Jenkins + AWS EKS
+Java CI/CD Pipeline – Spring Boot + Jenkins + AWS EKS
 
 A production-grade CI/CD pipeline that builds, Dockerizes, and deploys a Java Spring Boot application on AWS using Jenkins, ECR, and EKS.
 
@@ -59,7 +59,4 @@ A production-grade CI/CD pipeline that builds, Dockerizes, and deploys a Java Sp
 ## 👨‍💻 Author
 
 Built with ❤️ by [@jalowaini](https://github.com/jalowaini)
-# test webhook
-# test webhook2
-# test webhook3
-# test webhook4
+
