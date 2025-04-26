@@ -4,7 +4,7 @@ A production-grade CI/CD pipeline that builds, Dockerizes, and deploys a Java Sp
 
 ---
 
-## 🧰 Tech Stack
+## Tech Stack
 
 | Tool / Service | Purpose                        |
 |----------------|--------------------------------|
@@ -19,41 +19,32 @@ A production-grade CI/CD pipeline that builds, Dockerizes, and deploys a Java Sp
 
 ---
 
-## 🧱 Architecture Overview
+## Architecture Overview
 
 [ GitHub Repo ] ↓ [ Jenkins (Docker on EC2) ] ↓ [ Maven Build → .jar ] ↓ [ Docker Build → Image ] ↓ [ Push to Amazon ECR ] ↓ [ Deploy to Amazon EKS ] ↓ [ Access via LoadBalancer Service ]
 
 ---
 
-## 🔄 Jenkins Pipeline Stages
+## Jenkins Pipeline Stages
 
 | Stage             | Description                                        |
 |-------------------|----------------------------------------------------|
-| ✅ Checkout        | Pulls source code from GitHub                      |
-| ✅ Maven Build     | Compiles project and generates `.jar`              |
-| ✅ Docker Build    | Builds Docker image from the `.jar`                |
-| ✅ Push to ECR     | Pushes the Docker image to Amazon ECR             |
-| ✅ Deploy to EKS   | Applies Kubernetes manifests (deployment/service) |
-| ✅ Post-deploy Test| Verifies that the app is running and reachable     |
+| Checkout        | Pulls source code from GitHub                      |
+| Maven Build     | Compiles project and generates `.jar`              |
+| Docker Build    | Builds Docker image from the `.jar`                |
+| Push to ECR     | Pushes the Docker image to Amazon ECR             |
+| Deploy to EKS   | Applies Kubernetes manifests (deployment/service) |
+| Post-deploy Test| Verifies that the app is running and reachable     |
 
 ---
 
-## ✅ Results
+## Results
 
 - CI/CD is fully automated via Jenkins  
 - Docker Image stored in **Amazon ECR**  
 - App is deployed to **Amazon EKS** with public access  
 - Structure is production-ready and easily extensible  
-
----
-
-## 🔮 Future Enhancements
-
-- 🔐 HTTPS via Ingress + Cert-Manager  
-- 📊 Monitoring with Prometheus & Grafana  
-- 🔄 GitOps with ArgoCD or Helm  
-- 🧪 Automated smoke testing post-deploy  
-
+ 
 ---
 
 ## 👨‍💻 Author
